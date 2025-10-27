@@ -1,4 +1,4 @@
-# 🎬 Movie Booking System
+<img width="1117" height="761" alt="image" src="https://github.com/user-attachments/assets/8a536e5d-7341-4efb-b0ba-e1dba878bf26" /><img width="1064" height="769" alt="image" src="https://github.com/user-attachments/assets/7d9ffe8d-4fc8-494b-8683-c69706225ce3" /># 🎬 Movie Booking System
 
 ![Movie Booking System Banner](assets/banner.png)
 
@@ -20,7 +20,7 @@
 
 📸 **Screenshots**  
 
-**User:** 
+**User  Screenshots:** 
 
 | Home Page | Register page |
 |------------|----------------|
@@ -41,6 +41,35 @@
 |Print Ticke image/E-Ticket | MyBooking page|
 |------------|----------------|
 |<img width="435" height="746" alt="image" src="https://github.com/user-attachments/assets/e2fad741-9554-4537-83a2-92aead94d7d0" />|<img width="1079" height="900" alt="image" src="https://github.com/user-attachments/assets/7daa8713-d159-463a-939a-c2039deb0fce" />|
+
+**Admin  Screenshots:** 
+
+| Register Page| Login page |
+|------------|----------------|
+| <img width="1123" height="639" alt="image" src="https://github.com/user-attachments/assets/11a50676-6dd3-437d-ae6f-fd569f40ddb0" /> | <img width="1032" height="545" alt="image" src="https://github.com/user-attachments/assets/ef9e361c-5499-4620-84b8-ce340283c13a" />|
+
+|  Admin Dashboard Page| Add New Movie page |
+|------------|----------------|
+| <img width="1205" height="848" alt="image" src="https://github.com/user-attachments/assets/59f28fae-ce75-4137-9a73-23eb2f071b80" />
+ | <img width="1072" height="764" alt="image" src="https://github.com/user-attachments/assets/75889393-a393-46a6-9510-eb43aa9e88a6" />|
+
+ |  Manage Movies[Edit-update-active/inactive Movie] Page| Edit Movie page |
+|------------|----------------|
+| <img width="1090" height="880" alt="image" src="https://github.com/user-attachments/assets/24d7e4ac-4d08-4e7f-ab6f-8c62f2966bf4" />
+ |<img width="1059" height="707" alt="image" src="https://github.com/user-attachments/assets/73e9c8ca-b1e3-4241-aa8c-a14b87ecd233" />|
+
+ | Manage Showtimes[admin add/delete showtime] Page| | Add Showtime Page|
+ |------------|----------------|
+ |<img width="1084" height="629" alt="image" src="https://github.com/user-attachments/assets/963b6c3b-8fbb-4dd3-96c5-fab5d2e131e5" />|<img width="1052" height="572" alt="image" src="https://github.com/user-attachments/assets/009461b6-9a2e-4984-a78a-dc17e2f95904" />|
+
+ | Admin ShowBooking Page| | Admin Home Page|
+ |------------|----------------|
+|<img width="1022" height="889" alt="image" src="https://github.com/user-attachments/assets/c8d8641c-860f-4624-936b-60a63c79d4a3" />|<img width="1117" height="761" alt="image" src="https://github.com/user-attachments/assets/0cf38e03-d8ef-42a8-8d6b-694a366792da" />|
+
+
+
+**Databases Screenshots:** 
+
 ---
 
 ## 🧠 Table of Contents
