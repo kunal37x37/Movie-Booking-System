@@ -151,4 +151,30 @@ https://localhost:7000
 | 👑 Admin | rajhans@gmail.com | abc123 |
 | 👤 User | apple@gmail.com | abc123 |
 
+## 📱 Usage Guide
+### **For Users**
+-Register or log in
+-Browse available movies
+-Select a movie → Choose showtime
+-Book tickets → Confirm → Download ticket
+-Manage all bookings from My Bookings
 
+### **For Admins**
+-Log in as admin
+-Access Admin Dashboard
+-Manage movies, showtimes, and users
+-View booking reports and revenue stats
+
+### **Image Upload Feature**
+-Supported file types: .jpg, .jpeg, .png
+-Max file size: 5 MB
+-Automatic filename generation
+-Default image fallback
+-Live preview before upload
+
+### **Configuration (appsettings.json):**
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=MovieBookingSystem.db"
+  }
+}
