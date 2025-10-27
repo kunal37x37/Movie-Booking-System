@@ -21,7 +21,8 @@
 📸 **Screenshots**  
 | Home Page | Movie Details | Admin Dashboard |
 |------------|----------------|----------------|
-| ![Home Page](assets/home.png) | ![Movie Details](assets/movie-details.png) | ![Admin Dashboard](assets/admin-dashboard.png) |
+| <img width="1876" height="892" alt="image" src="https://github.com/user-attachments/assets/8c57599f-89e4-4872-84ea-077c901fff5e" />
+| ![Movie Details](assets/movie-details.png) | ![Admin Dashboard](assets/admin-dashboard.png) |
 
 ---
 
