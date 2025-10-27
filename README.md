@@ -23,6 +23,15 @@
 |------------|----------------|
 | <img width="1876" height="892" alt="image" src="https://github.com/user-attachments/assets/8c57599f-89e4-4872-84ea-077c901fff5e" /> | <img width="1883" height="881" alt="image" src="https://github.com/user-attachments/assets/acbc609d-5134-4dcd-86d1-09279e6a1c74" />|
 
+|Login page | Movie details page|
+|------------|----------------|
+|<img width="1893" height="759" alt="image" src="https://github.com/user-attachments/assets/284624d1-77d5-4ceb-a163-cdaada1ee8c7" />|<img width="1176" height="839" alt="image" src="https://github.com/user-attachments/assets/e5b5deb0-3cd0-427c-8e99-f26854f21672" />|
+
+|Ticket Booking page | confirmation /ticket download  page|
+|------------|----------------|
+|<img width="858" height="891" alt="image" src="https://github.com/user-attachments/assets/a44ea529-c83c-4658-a99c-b9c87d7ba547" />|<img width="1168" height="781" alt="image" src="https://github.com/user-attachments/assets/224ff223-7dce-47d6-882a-46c539d67aee" />|
+
+
 
 ---
 
