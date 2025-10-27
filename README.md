@@ -98,3 +98,50 @@ To create a modern, feature-rich movie booking experience with easy deployment, 
 <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+
+```
+
+## 🗄️ Database Schema
+
+### **Tables**
+| Table | Description |
+|--------|--------------|
+| 🧑‍💻 Users | User accounts and authentication |
+| 🎬 Movies | Movie catalog with image support |
+| 🕒 Showtimes | Movie screening schedules |
+| 🎟 Bookings | Ticket booking records |
+
+### **Relationships**
+Users (1) ────▶ (Many) Bookings
+Movies (1) ────▶ (Many) Showtimes
+Showtimes (1) ────▶ (Many) Bookings
+
+
+---
+
+## 🛠 Installation & Setup
+
+### **Prerequisites**
+- ✅ .NET 8.0 SDK  
+- ✅ Visual Studio 2022 or Visual Studio Code  
+
+### **Steps**
+
+```bash
+# 1️⃣ Clone the repository
+git clone https://github.com/yourusername/MovieBookingSystem.git
+cd MovieBookingSystem
+
+# 2️⃣ Restore dependencies
+dotnet restore
+
+# 3️⃣ Apply migrations & create database
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+# 4️⃣ Run the project
+dotnet run
+```
+
+
+
