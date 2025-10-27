@@ -112,9 +112,9 @@ To create a modern, feature-rich movie booking experience with easy deployment, 
 | 🎟 Bookings | Ticket booking records |
 
 ### **Relationships**
-Users (1) ────▶ (Many) Bookings
-Movies (1) ────▶ (Many) Showtimes
-Showtimes (1) ────▶ (Many) Bookings
+-Users (1) ────▶ (Many) Bookings
+-Movies (1) ────▶ (Many) Showtimes
+-Showtimes (1) ────▶ (Many) Bookings
 ---
 
 ## 🛠 Installation & Setup
