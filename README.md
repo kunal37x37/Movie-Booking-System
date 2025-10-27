@@ -1,4 +1,67 @@
 Movie Booking System - README
+
+# 🎬 Movie Booking System
+
+A complete ASP.NET Core MVC Movie Ticket Booking System with modern UI, real-time seat selection, and comprehensive admin panel.
+
+![ASP.NET Core](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?logo=sqlite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## ✨ Features
+
+### 🎯 Core Functionality
+- **User Registration & Authentication**
+- **Movie Catalog & Showtimes**
+- **Seat Selection & Booking**
+- **Booking Management**
+- **Admin Dashboard**
+- **Real-time Price Calculation**
+
+### 👥 User Features
+- ✅ User Registration & Login
+- ✅ Browse Movies & Showtimes
+- ✅ Seat Category Selection (Premium/Standard/Economy)
+- ✅ Ticket Booking with Real-time Pricing
+- ✅ Booking History & Cancellation
+- ✅ User Profile Management
+
+### 🎬 Movie Management
+- ✅ Movie Catalog with Images
+- ✅ Showtime Scheduling
+- ✅ Theater Management
+- ✅ Seat Availability Tracking
+- ✅ Price Management
+
+### ⚡ Admin Features
+- ✅ Admin Dashboard with Analytics
+- ✅ Movie CRUD Operations
+- ✅ Showtime Management
+- ✅ User Management
+- ✅ Booking Analytics & Reports
+- ✅ Revenue Tracking
+
+## 🛠️ Technology Stack
+
+- **Backend:** ASP.NET Core 8.0 MVC
+- **Database:** SQLite with Entity Framework Core
+- **Frontend:** Bootstrap 5, jQuery, Razor Pages
+- **Authentication:** Session-based
+- **Styling:** CSS3 with Responsive Design
+
+## 🚀 Quick Start
+
+### Prerequisites
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Git](https://git-scm.com/)
+
+### Installation & Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/kunal37x37/Movie-Booking-System.git
+   cd Movie-Booking-System
 ---------------------------------------------------------------------------------
 🎬 Project Overview
 A complete Movie Ticket Booking System built with ASP.NET Core MVC, Entity Framework Core, and SQLite. This system allows users to browse movies, book tickets, and manage bookings, while admins can manage movies, showtimes, and view reports.
