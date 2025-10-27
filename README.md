@@ -15,7 +15,8 @@
 
 ## 🌐 Demo
 
-
+<!-- Clickable Video Thumbnail -->
+[![Movie Booking System Demo](https://img.shields.io/badge/▶_CLICK_TO_PLAY_DEMO_VIDEO-FF0000?style=for-the-badge&logo=videoplayer&logoColor=white)](https://github.com/kunal37x37/Movie-Booking-System/blob/main/movie088.mp4)
 
 📸 **Screenshots**  
 | Home Page | Movie Details | Admin Dashboard |
