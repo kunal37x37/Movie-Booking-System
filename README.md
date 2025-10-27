@@ -123,3 +123,7 @@ Password: abc123
 Email: apple@gmail.com
 Password: abc123
 ```
+🎬 Movie Booking System
+https://img.shields.io/badge/ASP.NET_Core-8.0-purple?style=for-the-badge&logo=.net
+https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white
+https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
