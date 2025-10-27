@@ -106,8 +106,8 @@ dotnet run
 ```
 
 #### Method 2: Manual Download
-1.Download ZIP from Releases
-- **2.Extract to desired location
-3.Open in Visual Studio
-4.Build and run
+- Download ZIP from Releases
+- Extract to desired location
+- Open in Visual Studio
+- Build and run
 
