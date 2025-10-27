@@ -1,14 +1,12 @@
-Movie Booking System - README
-
 # 🎬 Movie Booking System
-
+---------------------------------------------------------------------------------
 A complete ASP.NET Core MVC Movie Ticket Booking System with modern UI, real-time seat selection, and comprehensive admin panel.
 
 ![ASP.NET Core](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)
 ![SQLite](https://img.shields.io/badge/SQLite-07405E?logo=sqlite&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
 ![License](https://img.shields.io/badge/License-MIT-green)
-
+---------------------------------------------------------------------------------
 ## ✨ Features
 
 ### 🎯 Core Functionality
@@ -41,7 +39,7 @@ A complete ASP.NET Core MVC Movie Ticket Booking System with modern UI, real-tim
 - ✅ User Management
 - ✅ Booking Analytics & Reports
 - ✅ Revenue Tracking
-
+---------------------------------------------------------------------------------
 ## 🛠️ Technology Stack
 
 - **Backend:** ASP.NET Core 8.0 MVC
@@ -49,306 +47,169 @@ A complete ASP.NET Core MVC Movie Ticket Booking System with modern UI, real-tim
 - **Frontend:** Bootstrap 5, jQuery, Razor Pages
 - **Authentication:** Session-based
 - **Styling:** CSS3 with Responsive Design
-
+---------------------------------------------------------------------------------
 ## 🚀 Quick Start
 
 ### Prerequisites
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Git](https://git-scm.com/)
-
+---------------------------------------------------------------------------------
 ### Installation & Setup
 
 1. **Clone the Repository**
-   ```bash
+   -----------------------------------------------
    git clone https://github.com/kunal37x37/Movie-Booking-System.git
    cd Movie-Booking-System
+   -----------------------------------------------
+  [ must required .NET 8.0 SDK or upper]
+
+2.Restore Dependencies
+-----------------------------------------------
+dotnet restore
+-----------------------------------------------
+
+3.Setup Database
+-----------------------------------------------
+dotnet ef database update
+-----------------------------------------------
+
+4.Run Application
+-----------------------------------------------
+dotnet run
+-----------------------------------------------
+
+5.Access Application
+Open your browser and navigate to:
+-----------------------------------------------
+https://localhost:7000
+or
+http://localhost:5000
+-----------------------------------------------
 ---------------------------------------------------------------------------------
-🎬 Project Overview
-A complete Movie Ticket Booking System built with ASP.NET Core MVC, Entity Framework Core, and SQLite. This system allows users to browse movies, book tickets, and manage bookings, while admins can manage movies, showtimes, and view reports.
-https://img.shields.io/badge/.NET-8.0-512BD4
----------------------------------------------------------------------------------
-📁 Project Structure
+🔐 Default Accounts
+Admin Account
+Email: rajhans@gmail.com
+Password: abc123
 
-MovieBookingSystem/
-├── 📄 MovieBookingSystem.csproj
-├── 📄 Program.cs
-├── 📄 appsettings.json
-├── 📂 Properties/
-│   └── 📄 launchSettings.json
-├── 📂 wwwroot/
-│   ├── 📂 css/
-│   │   └── 📄 site.css
-│   └── 📂 images/
-│       ├── 📂 movies/ (uploaded images)
-│       └── 📄 default-movie.jpg
-├── 📂 Data/
-│   └── 📄 ApplicationDbContext.cs
-├── 📂 Models/
-│   ├── 📄 User.cs
-│   ├── 📄 Movie.cs
-│   ├── 📄 Showtime.cs
-│   └── 📄 Booking.cs
-├── 📂 Controllers/
-│   ├── 📄 HomeController.cs
-│   ├── 📄 AccountController.cs
-│   ├── 📄 BookingController.cs
-│   └── 📄 AdminController.cs
-├── 📂 Views/
-│   ├── 📂 Shared/
-│   │   ├── 📄 _Layout.cshtml
-│   │   ├── 📄 _ValidationScriptsPartial.cshtml
-│   │   └── 📄 Error.cshtml
-│   ├── 📂 Home/
-│   │   ├── 📄 Index.cshtml
-│   │   ├── 📄 MovieDetails.cshtml
-│   │   ├── 📄 About.cshtml
-│   │   ├── 📄 Contact.cshtml
-│   │   └── 📄 Privacy.cshtml
-│   ├── 📂 Account/
-│   │   ├── 📄 Login.cshtml
-│   │   ├── 📄 Register.cshtml
-│   │   └── 📄 Profile.cshtml
-│   ├── 📂 Booking/
-│   │   ├── 📄 BookShowtime.cshtml
-│   │   ├── 📄 BookingConfirmation.cshtml
-│   │   └── 📄 MyBookings.cshtml
-│   └── 📂 Admin/
-│       ├── 📄 AdminDashboard.cshtml
-│       ├── 📄 Movies.cshtml
-│       ├── 📄 AddMovie.cshtml
-│       ├── 📄 EditMovie.cshtml
-│       ├── 📄 Showtimes.cshtml
-│       ├── 📄 BookingMessages.cshtml
-│       ├── 📄 DeleteMovie.cshtml
-│       ├── 📄 AddShowtime.cshtml
-│       ├── 📄 AllBookings.cshtml
-│       └── 📄 Users.cshtml
-└── 📂 Migrations/
-    └── 📄 (Entity Framework migration files)
+User Account
+Register new account or use:
 
-
----------------------------------------------------------------------------------
-🚀 Features
-
-👥 User Features
-•	✅ User Registration & Login
-•	✅ Browse Movies with Details
-•	✅ View Available Showtimes
-•	✅ Book Tickets with different categories(1-10 tickets per booking)
-•	✅ Automatic Seat Allocation
-•	✅ Booking Confirmation with Reference Number
-•	✅ View/Cancel Bookings
-•	✅ Download/Print Movie Tickets
-•	✅ User Profile Management
-
-🎯 Admin Features
-•	✅ Admin Dashboard with Statistics
-•	✅ Manage Movies (Add, Edit, Delete, Activate/Deactivate)
-•	✅ Image Upload for Movie Posters
-•	✅ Manage Showtimes
-•	✅ View All Bookings
-•	✅ User Management
-•	✅ Revenue Reports
-
-🛠️ Technical Features
-•	✅ SQLite Database (Easy setup, no server required)
-•	✅ Entity Framework Core with Code-First Approach
-•	✅ Session-based Authentication
-•	✅ Responsive Bootstrap UI
-•	✅ Form Validation & Error Handling
-•	✅ Image Upload with Validation
-•	✅ Real-time Seat Availability
-
+Email: apple@gmail.com
+Password: abc123
 ---------------------------------------------------------------------------------
 🗄️ Database Schema
-Tables:
-1.	Users - User accounts and authentication
-2.	Movies - Movie catalog with image support
-3.	Showtimes - Movie screening schedules
-4.	Bookings - Ticket booking records
-
-Relationships:
-•	Users (1) → (Many) Bookings
-•	Movies (1) → (Many) Showtimes
-•	Showtimes (1) → (Many) Bookings
-
+Tables
+Users - User accounts and authentication
+Movies - Movie catalog and details
+Showtimes - Movie schedules and theater info
+Bookings - Ticket bookings and transactions
 ---------------------------------------------------------------------------------
-🛠️ Installation & Setup
 
-Prerequisites
-•	.NET 8.0 SDK
-•	Visual Studio 2022 or VS Code
-
-Step-by-Step Setup
-
-1.	Clone/Download the Project
---------------------------------------
-cd MovieBookingSystem
---------------------------------------
-
-2.	Restore Packages
---------------------------------------
-dotnet restore
---------------------------------------
-
-3.	Create Database
---------------------------------------
-dotnet ef migrations add InitialCreate
-dotnet ef database update
---------------------------------------
-4.	Run Application
---------------------------------------
-dotnet run
---------------------------------------
-
-5.	Access Application
-o	Open: https://localhost:7000
-o	Admin Login: admin@moviebook.com / admin123
-o	User Register: Create new account
-
-
+🎨 Project Structure
+MovieBookingSystem/
+├── Controllers/          # MVC Controllers
+│   ├── HomeController.cs
+│   ├── AccountController.cs
+│   ├── BookingController.cs
+│   └── AdminController.cs
+├── Models/              # Data Models
+│   ├── User.cs
+│   ├── Movie.cs
+│   ├── Showtime.cs
+│   └── Booking.cs
+├── Views/               # Razor Views
+│   ├── Home/
+│   ├── Account/
+│   ├── Booking/
+│   └── Admin/
+├── Data/                # Database Context
+│   └── ApplicationDbContext.cs
+├── wwwroot/             # Static Files
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── Program.cs           # Application Entry Point
 ---------------------------------------------------------------------------------
-🔑 Default Accounts
-
-Admin Account
-•	Email: rajhans@gmail.com
-•	Password: abc123
-
-Sample User Accounts
-•	Email: abc123@gmail.com
-•	Password: abc123
-
-📱 Usage Guide
-For Users:
-1.	Register/Login - Create account or login
-2.	Browse Movies - View available movies on homepage
-3.	Select Movie - Click on movie for details and showtimes
-4.	Book Tickets - Choose showtime, select tickets, confirm booking
-5.	Manage Bookings - View/Cancel bookings from "My Bookings"
-
-For Admins:
-1.	Admin Login - Use admin credentials
-2.	Dashboard - View system statistics
-3.	Manage Movies - Add/edit movies with image upload
-4.	Manage Showtimes - Add screening schedules
-5.	View Reports - Check bookings and revenue
-
+💰 Pricing Structure
+Premium Class: Base Price + ₹50 (Best view)
+Standard Class: Base Price (Comfortable)
+Economy Class: Base Price - ₹20 (Budget-friendly)
 ---------------------------------------------------------------------------------
-🖼️ Image Upload Feature
+📱 API Endpoints
+Public Routes
+GET / - Homepage with movies
+GET /Home/MovieDetails/{id} - Movie details
+GET /Account/Login - User login
+GET /Account/Register - User registration
 
-Supported Features:
-•	✅ Upload movie posters (JPG, PNG, JPEG)
-•	✅ Max file size: 5MB
-•	✅ Automatic image validation
-•	✅ Unique filename generation
-•	✅ Default image fallback
-•	✅ Image preview before upload
+Protected Routes
+GET /Booking/BookShowtime/{id} - Book tickets
+GET /Booking/MyBookings - User bookings
+POST /Booking/CancelBooking/{id} - Cancel booking
 
-Image Storage:
-•	Path: wwwroot/images/movies/
-•	Default: wwwroot/images/default-movie.jpg
-
-🔧 Configuration
-Database Connection (appsettings.json)
-json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=MovieBookingSystem.db"
-  }
-}
-
+Admin Routes
+GET /Admin/AdminDashboard - Admin dashboard
+GET /Admin/Movies - Manage movies
+GET /Admin/Showtimes - Manage showtimes
+GET /Admin/AllBookings - View all bookings
 ---------------------------------------------------------------------------------
-Packages Used (MovieBookingSystem.csproj)
-xml
-<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
-
+🎫 Booking Flow
+Browse Movies → View available movies
+Select Movie → Check showtimes and theaters
+Choose Showtime → Select date and time
+Select Seats → Choose category and tickets
+Confirm Booking → Review and pay
+Get Confirmation → Booking reference and details
 ---------------------------------------------------------------------------------
 🐛 Troubleshooting
-Common Issues & Solutions:
-1.	Database Connection Error
--------------------------------------
-dotnet ef database drop --force
+
+Common Issues
+
+1.Database Connection Error
+------------------------------------------
 dotnet ef database update
--------------------------------------
+------------------------------------------
 
-2.	Migration Errors
--------------------------------------
-dotnet ef migrations remove
-dotnet ef migrations add InitialCreate
-dotnet ef database update
--------------------------------------
-
-3.	Image Upload Not Working
--------------------------------------
-o	Ensure wwwroot/images/movies/ folder exists
-o	Check file permissions
-o	Verify image file format and size
--------------------------------------
-
-4.	Build Errors
--------------------------------------
+2.Build Failures
+------------------------------------------
 dotnet clean
+dotnet restore
 dotnet build
--------------------------------------
+------------------------------------------
 
+3.Port Already in Use
+------------------------------------------
+dotnet run --urls="https://localhost:7001"
+------------------------------------------
 
----------------------------------------------------------------------------------
-📊 Sample Data
-The system comes with pre-loaded sample data:
-•	6+ Movies (Marvel, Bollywood, Anime)
-•	Multiple showtimes
-•	Sample bookings
-•	Admin and test user accounts
-
-
----------------------------------------------------------------------------------
-🎨 UI/UX Features
-•	Responsive Design - Works on desktop, tablet, mobile
-•	Bootstrap 5 - Modern UI components
-•	Font Awesome Icons - Enhanced visual appeal
-•	Interactive Forms - Real-time validation
-•	Image Previews - Before upload confirmation
-•	Alert Messages - Success/error notifications
-
-
----------------------------------------------------------------------------------
-🔒 Security Features
-•	Session-based Authentication
-•	Anti-Forgery Tokens
-•	Input Validation
-•	SQL Injection Prevention
-•	Role-based Access Control (Admin/User)
-
-
----------------------------------------------------------------------------------
-📈 Future Enhancements
-•	Payment Gateway Integration
-•	Email Notifications
-•	Seat Selection Interface
-•	Movie Ratings & Reviews
-•	Advanced Search & Filters
-•	Mobile App Version
-
+4.Missing EF Tools
+------------------------------------------
+dotnet tool install --global dotnet-ef
+------------------------------------------
 
 ---------------------------------------------------------------------------------
 🤝 Contributing
-1.	Fork the project
-2.	Create feature branch
-3.	Commit changes
-4.	Push to branch
-5.	Create Pull Request
+Fork the repository
+Create feature branch (git checkout -b feature/AmazingFeature)
+Commit changes (git commit -m 'Add AmazingFeature')
+Push to branch (git push origin feature/AmazingFeature)
+Open Pull Request
 
 ---------------------------------------------------------------------------------
 📄 License
-This project is for educational purposes. Feel free to modify and use.
+This project is licensed under the MIT License - see the LICENSE file for details.
+---------------------------------------------------------------------------------
 👨‍💻 Developer
-Built using ASP.NET Core MVC
-🆘 Support
-For issues and questions:
-1.	Check troubleshooting section
-2.	Verify database connection
-3.	Ensure all packages are restored
-4.	Check application logs for errors
-________________________________________
+Kunal - GitHub
+---------------------------------------------------------------------------------
+🙏 Acknowledgments
+Bootstrap for UI components
+Entity Framework Core for data access
+ASP.NET Core team for the amazing framework
+---------------------------------------------------------------------------------
+⭐ Star this repo if you find it helpful!
+🔗 Links
+Issue Tracker
+Releases
+---------------------------------------------------------------------------------
+
