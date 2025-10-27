@@ -1,0 +1,182 @@
+@model List<MovieBookingSystem.Models.Movie>
+
+@{
+    ViewData["Title"] = "Manage Movies";
+}
+
+<div class="container">
+    <h2><i class="fas fa-film"></i> Manage Movies</h2>
+
+    <a href="@Url.Action("AddMovie")" class="btn btn-success mb-3">
+        <i class="fas fa-plus"></i> Add New Movie
+    </a>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <h4><i class="fas fa-info-circle"></i> No movies found!</h4>
+            <p>No movies have been added yet. <a href="@Url.Action("AddMovie")" class="alert-link">Add a movie</a> to get started.</p>
+        </div>
+    }
+    else
+    {
+        <!-- Active/Inactive Filter Buttons -->
+        <div class="btn-group mb-3" role="group">
+            <a href="@Url.Action("Movies", new { filter = "all" })" 
+               class="btn btn-outline-primary @(ViewBag.Filter == "all" || ViewBag.Filter == null ? "active" : "")">
+                All Movies (@Model.Count)
+            </a>
+            <a href="@Url.Action("Movies", new { filter = "active" })" 
+               class="btn btn-outline-success @(ViewBag.Filter == "active" ? "active" : "")">
+                Active (@Model.Count(m => m.IsActive))
+            </a>
+            <a href="@Url.Action("Movies", new { filter = "inactive" })" 
+               class="btn btn-outline-secondary @(ViewBag.Filter == "inactive" ? "active" : "")">
+                Inactive (@Model.Count(m => !m.IsActive))
+            </a>
+        </div>
+
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 @(!movie.IsActive ? "border-warning" : "")">
+                        @if (!movie.IsActive)
+                        {
+                            <div class="card-header bg-warning text-dark text-center">
+                                <i class="fas fa-eye-slash"></i> INACTIVE
+                            </div>
+                        }
+                        <img src="@movie.ImageUrl" class="card-img-top movie-admin-image" 
+                             alt="@movie.Title" 
+                             onerror="this.src='/images/default-movie.jpg'">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @movie.Title
+                                @if (!movie.IsActive)
+                                {
+                                    <span class="badge bg-warning ms-2">Hidden</span>
+                                }
+                            </h5>
+                            <p class="card-text">@movie.Description</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="fas fa-tags"></i> @movie.Genre<br>
+                                    <i class="fas fa-globe"></i> @movie.Language<br>
+                                    <i class="fas fa-clock"></i> @movie.Duration.ToString(@"hh\:mm") hrs<br>
+                                    <i class="fas fa-tag"></i> ₹@movie.TicketPrice<br>
+                                    <i class="fas fa-calendar"></i> @movie.ReleaseDate.ToString("MMM dd, yyyy")
+                                </small>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-@(movie.IsActive ? "success" : "danger")">
+                                    @(movie.IsActive ? "Active" : "Inactive")
+                                </span>
+                                <small class="text-muted">
+                                    Added: @movie.CreatedAt.ToString("MMM dd, yyyy")
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100" role="group">
+                                <a href="@Url.Action("EditMovie", new { id = movie.Id })" 
+                                   class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                
+                                <!-- Toggle Active/Inactive Button -->
+                                <form asp-action="ToggleMovieStatus" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@movie.Id" />
+                                    @if (movie.IsActive)
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-secondary" 
+                                                onclick="return confirm('Are you sure you want to deactivate this movie? It will not be visible to users.')">
+                                            <i class="fas fa-eye-slash"></i> Deactivate
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-success" 
+                                                onclick="return confirm('Are you sure you want to activate this movie? It will be visible to users.')">
+                                            <i class="fas fa-eye"></i> Activate
+                                        </button>
+                                    }
+                                </form>
+                                
+                                <form asp-action="DeleteMovie" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@movie.Id" />
+                                    <button type="submit" class="btn btn-sm btn-danger" 
+                                            onclick="return confirm('Are you sure you want to permanently delete this movie? This action cannot be undone.')">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Movies Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <h4 class="text-primary">@Model.Count</h4>
+                                <p class="text-muted">Total Movies</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h4 class="text-success">@Model.Count(m => m.IsActive)</h4>
+                                <p class="text-muted">Active Movies</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h4 class="text-warning">@Model.Count(m => !m.IsActive)</h4>
+                                <p class="text-muted">Inactive Movies</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h4 class="text-info">$@Model.Where(m => m.IsActive).Sum(m => m.TicketPrice).ToString("0.00")</h4>
+                                <p class="text-muted">Avg. Ticket Price</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .movie-admin-image {
+        height: 250px;
+        object-fit: cover;
+    }
+    
+    .card {
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .btn-group .btn {
+        border-radius: 0;
+    }
+    
+    .btn-group .btn:first-child {
+        border-top-left-radius: 0.375rem;
+        border-bottom-left-radius: 0.375rem;
+    }
+    
+    .btn-group .btn:last-child {
+        border-top-right-radius: 0.375rem;
+        border-bottom-right-radius: 0.375rem;
+    }
+</style>

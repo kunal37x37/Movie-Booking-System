@@ -1,0 +1,48 @@
+﻿@model List<MovieBookingSystem.Models.Movie>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Welcome to Movie Booking System</h1>
+    <p class="lead">Book your favorite movies in just a few clicks!</p>
+</div>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 movie-card">
+                <img src="@movie.ImageUrl" class="card-img-top movie-image" alt="@movie.Title" 
+                     onerror="this.src='/images/default-movie.jpg'">
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <p class="card-text">@movie.Description</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <i class="fas fa-film"></i> @movie.Genre | 
+                            <i class="fas fa-globe"></i> @movie.Language | 
+                            <i class="fas fa-clock"></i> @movie.Duration.ToString(@"hh\:mm") hrs
+                        </small>
+                    </p>
+                    <p class="card-text"><strong>₹@movie.TicketPrice.ToString("0")</strong></p>
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("MovieDetails", "Home", new { id = movie.Id })" 
+                       class="btn btn-primary w-100">
+                        <i class="fas fa-info-circle"></i> View Details & Book
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        <h4>No movies available at the moment.</h4>
+        <p>Please check back later for new releases.</p>
+    </div>
+}

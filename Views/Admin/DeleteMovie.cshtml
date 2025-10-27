@@ -1,0 +1,92 @@
+@model MovieBookingSystem.Models.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="container">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Delete Movie</h3>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-warning">
+                <h5><i class="fas fa-warning"></i> Warning!</h5>
+                <p class="mb-0">You are about to permanently delete this movie. This action cannot be undone.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="@Model.ImageUrl" alt="@Model.Title" 
+                         class="img-fluid rounded" 
+                         style="max-height: 300px; object-fit: cover;"
+                         onerror="this.src='/images/default-movie.jpg'">
+                </div>
+                <div class="col-md-8">
+                    <h4>@Model.Title</h4>
+                    <p><strong>Description:</strong> @Model.Description</p>
+                    <p><strong>Genre:</strong> @Model.Genre</p>
+                    <p><strong>Language:</strong> @Model.Language</p>
+                    <p><strong>Duration:</strong> @Model.Duration.ToString(@"hh\:mm") hours</p>
+                    <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("MMM dd, yyyy")</p>
+                    <p><strong>Ticket Price:</strong> $@Model.TicketPrice</p>
+                    <p><strong>Status:</strong> 
+                        <span class="badge bg-@(Model.IsActive ? "success" : "danger")">
+                            @(Model.IsActive ? "Active" : "Inactive")
+                        </span>
+                    </p>
+                    <p><strong>Created:</strong> @Model.CreatedAt.ToString("MMM dd, yyyy")</p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <form asp-action="DeleteMovie" method="post" id="deleteForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete" required>
+                        <label class="form-check-label text-danger" for="confirmDelete">
+                            <strong>I understand that this action will permanently delete the movie and cannot be undone</strong>
+                        </label>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button type="submit" class="btn btn-danger" id="deleteButton" disabled>
+                            <i class="fas fa-trash"></i> Permanently Delete Movie
+                        </button>
+                        <a href="@Url.Action("Movies", "Admin")" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const confirmCheckbox = document.getElementById('confirmDelete');
+            const deleteButton = document.getElementById('deleteButton');
+            const deleteForm = document.getElementById('deleteForm');
+            
+            // Enable/disable delete button based on checkbox
+            if (confirmCheckbox && deleteButton) {
+                confirmCheckbox.addEventListener('change', function() {
+                    deleteButton.disabled = !this.checked;
+                });
+            }
+            
+            // Confirm deletion
+            if (deleteForm) {
+                deleteForm.addEventListener('submit', function(e) {
+                    if (!confirm('⚠️ FINAL WARNING: This will permanently delete the movie and all associated data. This action cannot be undone!')) {
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+    </script>
+}

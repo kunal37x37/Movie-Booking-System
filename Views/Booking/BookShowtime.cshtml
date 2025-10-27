@@ -1,0 +1,550 @@
+@model MovieBookingSystem.Models.Booking
+@{
+    ViewData["Title"] = "Book Tickets";
+    var showtime = ViewBag.Showtime as MovieBookingSystem.Models.Showtime;
+    var ticketPrice = showtime?.Movie?.TicketPrice ?? 0;
+}
+
+<div class="container">
+    <h2><i class="fas fa-ticket-alt"></i> Book Tickets for @showtime?.Movie?.Title</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle"></i> Showtime Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <img src="@showtime?.Movie?.ImageUrl" alt="@showtime?.Movie?.Title" 
+                             class="img-fluid rounded" style="max-height: 200px; object-fit: cover;"
+                             onerror="this.src='/images/default-movie.jpg'">
+                    </div>
+                    <p><strong><i class="fas fa-theater-masks"></i> Theater:</strong> @showtime?.Theater</p>
+                    <p><strong><i class="fas fa-calendar-alt"></i> Date & Time:</strong> @showtime?.ShowDateTime.ToString("MMM dd, yyyy hh:mm tt")</p>
+                    <p><strong><i class="fas fa-chair"></i> Available Seats:</strong> @showtime?.AvailableSeats</p>
+                    <p><strong><i class="fas fa-tag"></i> Price per Ticket:</strong> ₹@ticketPrice.ToString("0")</p>
+                    <p><strong><i class="fas fa-clock"></i> Duration:</strong> @showtime?.Movie?.Duration.ToString(@"hh\:mm") hrs</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-ticket-alt"></i> Book Your Tickets</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" id="bookingForm">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="showtimeId" value="@showtime?.Id" />
+                        
+                        <!-- Seat Categories -->
+                        <div class="form-group mb-3">
+                            <label class="form-label"><strong><i class="fas fa-couch"></i> Select Seat Category:</strong></label>
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <div class="card category-card h-100">
+                                        <div class="card-header text-center bg-warning text-dark">
+                                            <h6 class="mb-0">Premium</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="text-primary">₹@((ticketPrice + 50).ToString("0"))</h4>
+                                            <p class="small text-muted mb-2">Best view</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="seatCategory" 
+                                                       id="Premium" value="Premium" required onchange="updateBookingSummary()">
+                                                <label class="form-check-label" for="Premium">
+                                                    Select Premium
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="card category-card h-100">
+                                        <div class="card-header text-center bg-primary text-white">
+                                            <h6 class="mb-0">Standard</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="text-primary">₹@ticketPrice.ToString("0")</h4>
+                                            <p class="small text-muted mb-2">Comfortable</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="seatCategory" 
+                                                       id="Standard" value="Standard" required onchange="updateBookingSummary()" checked>
+                                                <label class="form-check-label" for="Standard">
+                                                    Select Standard
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="card category-card h-100">
+                                        <div class="card-header text-center bg-secondary text-white">
+                                            <h6 class="mb-0">Economy</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h4 class="text-primary">₹@((ticketPrice - 20).ToString("0"))</h4>
+                                            <p class="small text-muted mb-2">Budget friendly</p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="seatCategory" 
+                                                       id="Economy" value="Economy" required onchange="updateBookingSummary()">
+                                                <label class="form-check-label" for="Economy">
+                                                    Select Economy
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Number of Tickets -->
+                        <div class="form-group mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-users"></i> Number of Tickets (1-10)
+                            </label>
+                            <input type="number" name="numberOfTickets" class="form-control" min="1" max="10" value="1" required 
+                                   onchange="updateBookingSummary()" id="ticketCountInput" />
+                            <small class="form-text text-muted">Maximum 10 tickets per booking</small>
+                            <small id="availableSeatsInfo" class="form-text text-info"></small>
+                        </div>
+                        
+                        <!-- Booking Summary -->
+                        <div class="alert alert-info mb-3">
+                            <h6 class="alert-heading"><i class="fas fa-receipt"></i> Booking Summary</h6>
+                            <div class="row">
+                                <div class="col-6">
+                                    <small>Category: <strong id="summaryCategory">Standard</strong></small><br>
+                                    <small>Tickets: <strong id="summaryTicketCount">1</strong></small>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <small>Price per ticket: <strong>₹<span id="summaryPrice">@ticketPrice.ToString("0")</span></strong></small><br>
+                                    <h5 class="mb-0 mt-1">Total: ₹<span id="summaryTotal">@ticketPrice.ToString("0")</span></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg w-100" id="bookButton">
+                                <i class="fas fa-check-circle"></i> Confirm Booking - ₹<span id="buttonTotal">@ticketPrice.ToString("0")</span>
+                            </button>
+                            <a href="@Url.Action("MovieDetails", "Home", new { id = showtime?.MovieId })" 
+                               class="btn btn-secondary w-100 mt-2">
+                                <i class="fas fa-arrow-left"></i> Back to Movie
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Theater Layout -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-theater-masks"></i> Theater Layout</h5>
+                </div>
+                <div class="card-body">
+                    <div class="theater-simple">
+                        <!-- Screen -->
+                        <div class="screen-simple text-center mb-4">
+                            <div class="screen-box">
+                                <h5 class="mb-0">SCREEN</h5>
+                            </div>
+                            <div class="screen-note">All seats face towards screen</div>
+                        </div>
+
+                        <!-- Seat Categories -->
+                        <div class="seat-categories">
+                            <!-- Premium Section -->
+                            <div class="category-section premium-cat mb-3">
+                                <div class="category-header bg-warning text-dark p-2 rounded">
+                                    <strong>Premium Class (Rows A-B) - ₹@((ticketPrice + 50).ToString("0"))</strong>
+                                </div>
+                                <div class="seats-container mt-2">
+                                    @for (char row = 'A'; row <= 'B'; row++)
+                                    {
+                                        <div class="seat-row-simple">
+                                            <span class="row-label-simple">Row @row</span>
+                                            <div class="seats-simple">
+                                                @for (int seat = 1; seat <= 8; seat++)
+                                                {
+                                                    <span class="seat-simple premium-simple">@row@seat</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Standard Section -->
+                            <div class="category-section standard-cat mb-3">
+                                <div class="category-header bg-primary text-white p-2 rounded">
+                                    <strong>Standard Class (Rows C-E) - ₹@ticketPrice.ToString("0")</strong>
+                                </div>
+                                <div class="seats-container mt-2">
+                                    @for (char row = 'C'; row <= 'E'; row++)
+                                    {
+                                        <div class="seat-row-simple">
+                                            <span class="row-label-simple">Row @row</span>
+                                            <div class="seats-simple">
+                                                @for (int seat = 1; seat <= 10; seat++)
+                                                {
+                                                    <span class="seat-simple standard-simple">@row@seat</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Economy Section -->
+                            <div class="category-section economy-cat">
+                                <div class="category-header bg-secondary text-white p-2 rounded">
+                                    <strong>Economy Class (Rows F-H) - ₹@((ticketPrice - 20).ToString("0"))</strong>
+                                </div>
+                                <div class="seats-container mt-2">
+                                    @for (char row = 'F'; row <= 'H'; row++)
+                                    {
+                                        <div class="seat-row-simple">
+                                            <span class="row-label-simple">Row @row</span>
+                                            <div class="seats-simple">
+                                                @for (int seat = 1; seat <= 12; seat++)
+                                                {
+                                                    <span class="seat-simple economy-simple">@row@seat</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="legend-simple mt-4 p-3 bg-light rounded">
+                            <div class="row text-center">
+                                <div class="col-md-3">
+                                    <span class="legend-item-simple">
+                                        <span class="legend-color premium-legend"></span>
+                                        Premium
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="legend-item-simple">
+                                        <span class="legend-color standard-legend"></span>
+                                        Standard
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="legend-item-simple">
+                                        <span class="legend-color economy-legend"></span>
+                                        Economy
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="legend-item-simple">
+                                        <i class="fas fa-arrow-up text-primary"></i>
+                                        Towards Screen
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Price data
+        const basePrice = @ticketPrice;
+        const availableSeats = @showtime?.AvailableSeats ?? 0;
+        const categoryPrices = {
+            'Premium': basePrice + 50,
+            'Standard': basePrice,
+            'Economy': basePrice - 20
+        };
+
+        function updateBookingSummary() {
+            const selectedCategory = document.querySelector('input[name="seatCategory"]:checked');
+            const ticketCount = parseInt(document.getElementById('ticketCountInput').value) || 1;
+            
+            let pricePerTicket = basePrice;
+            let categoryName = "Standard";
+            
+            if (selectedCategory) {
+                categoryName = selectedCategory.value;
+                pricePerTicket = categoryPrices[categoryName];
+            }
+            
+            const totalAmount = ticketCount * pricePerTicket;
+            
+            // Update all display elements
+            document.getElementById('summaryCategory').textContent = categoryName;
+            document.getElementById('summaryTicketCount').textContent = ticketCount;
+            document.getElementById('summaryPrice').textContent = pricePerTicket.toFixed(0);
+            document.getElementById('summaryTotal').textContent = totalAmount.toFixed(0);
+            document.getElementById('buttonTotal').textContent = totalAmount.toFixed(0);
+            
+            updateAvailableSeatsInfo();
+            highlightSelectedCategory(categoryName);
+        }
+
+        function updateAvailableSeatsInfo() {
+            const ticketCount = parseInt(document.getElementById('ticketCountInput').value) || 1;
+            const availableInfo = document.getElementById('availableSeatsInfo');
+            const bookButton = document.getElementById('bookButton');
+            
+            if (ticketCount > availableSeats) {
+                availableInfo.textContent = `Only ${availableSeats} seats available`;
+                availableInfo.className = 'form-text text-danger';
+                bookButton.disabled = true;
+                bookButton.classList.add('btn-danger');
+                bookButton.classList.remove('btn-success');
+            } else {
+                availableInfo.textContent = `${availableSeats} seats available`;
+                availableInfo.className = 'form-text text-success';
+                bookButton.disabled = false;
+                bookButton.classList.remove('btn-danger');
+                bookButton.classList.add('btn-success');
+            }
+        }
+
+        function highlightSelectedCategory(category) {
+            // Remove all highlights
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.classList.remove('category-highlight');
+            });
+            
+            // Add highlight to selected category
+            const selectedSection = document.querySelector(`.${category.toLowerCase()}-cat`);
+            if (selectedSection) {
+                selectedSection.classList.add('category-highlight');
+            }
+        }
+
+        // Form submission handling
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            const ticketCount = parseInt(document.getElementById('ticketCountInput').value) || 1;
+            const selectedCategory = document.querySelector('input[name="seatCategory"]:checked');
+            
+            if (!selectedCategory) {
+                e.preventDefault();
+                alert('Please select a seat category.');
+                return false;
+            }
+            
+            if (ticketCount > availableSeats) {
+                e.preventDefault();
+                alert(`Sorry, only ${availableSeats} seats are available. Please reduce the number of tickets.`);
+                return false;
+            }
+            
+            if (ticketCount < 1 || ticketCount > 10) {
+                e.preventDefault();
+                alert('Please enter between 1 to 10 tickets.');
+                return false;
+            }
+            
+            const button = document.getElementById('bookButton');
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        });
+
+        // Input validation
+        document.getElementById('ticketCountInput').addEventListener('input', function() {
+            let value = parseInt(this.value) || 0;
+            
+            if (value < 1) {
+                this.value = 1;
+            } else if (value > 10) {
+                this.value = 10;
+            }
+            
+            updateBookingSummary();
+        });
+
+        // Initial calculation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBookingSummary();
+            
+            // Set default category to Standard
+            const standardRadio = document.getElementById('Standard');
+            if (standardRadio) {
+                standardRadio.checked = true;
+            }
+        });
+    </script>
+
+    <style>
+        .category-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .category-card .form-check-input:checked ~ .card-body {
+            background-color: #e8f5e8;
+            border: 2px solid #28a745;
+        }
+        
+        .form-check-input:checked {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        
+        #bookButton:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Simple Theater Styles */
+        .theater-simple {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .screen-simple {
+            padding: 20px 0;
+        }
+
+        .screen-box {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .screen-note {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .category-section {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .category-highlight {
+            border-color: #28a745;
+            background-color: rgba(40, 167, 69, 0.05);
+        }
+
+        .seat-row-simple {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            gap: 10px;
+        }
+
+        .row-label-simple {
+            font-weight: bold;
+            color: #495057;
+            min-width: 60px;
+            font-size: 0.9em;
+        }
+
+        .seats-simple {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .seat-simple {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            transition: all 0.2s ease;
+        }
+
+        .premium-simple {
+            background: linear-gradient(135deg, #ffc107, #ff8c00);
+            color: #000;
+            border-color: #e0a800;
+        }
+
+        .standard-simple {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            border-color: #0056b3;
+        }
+
+        .economy-simple {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: #fff;
+            border-color: #495057;
+        }
+
+        .seat-simple:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .legend-simple {
+            border: 1px solid #dee2e6;
+        }
+
+        .legend-item-simple {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .premium-legend { background: #ffc107; }
+        .standard-legend { background: #007bff; }
+        .economy-legend { background: #6c757d; }
+
+        .category-header {
+            font-size: 0.95em;
+        }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .seat-simple {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7em;
+            }
+            
+            .row-label-simple {
+                min-width: 50px;
+                font-size: 0.8em;
+            }
+            
+            .legend-item-simple {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+}

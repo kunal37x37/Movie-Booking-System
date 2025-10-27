@@ -1,0 +1,84 @@
+@model MovieBookingSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Confirmation";
+}
+
+<div class="container">
+    <div class="text-center">
+        <div class="alert alert-success">
+            <h2><i class="fas fa-check-circle"></i> Booking Confirmed!</h2>
+            <p class="mb-0">Your tickets have been successfully booked.</p>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-ticket-alt"></i> Booking Reference: @Model.BookingReference
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-film"></i> Movie Details</h5>
+                        <hr>
+                        <p><strong>Movie:</strong> @Model.Showtime?.Movie?.Title</p>
+                        <p><strong>Theater:</strong> @Model.Showtime?.Theater</p>
+                        <p><strong>Show Time:</strong> @Model.Showtime?.ShowDateTime.ToString("MMM dd, yyyy hh:mm tt")</p>
+                        <p><strong>Duration:</strong> @Model.Showtime?.Movie?.Duration.ToString(@"hh\:mm") hours</p>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-receipt"></i> Booking Details</h5>
+                        <hr>
+                        <p><strong>Tickets:</strong> @Model.NumberOfTickets</p>
+                        <p><strong>Seats:</strong> @Model.Seats</p>
+                        <p><strong>Total Amount:</strong> ₹@Model.TotalAmount.ToString("0")</p>
+                        <p><strong>Booking Date:</strong> @Model.BookingDate.ToString("MMM dd, yyyy hh:mm tt")</p>
+                        <p><strong>Status:</strong> <span class="badge bg-success">@Model.Status</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <a href="@Url.Action("MyBookings", "Booking")" class="btn btn-primary">
+                <i class="fas fa-list"></i> View All Bookings
+            </a>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <button onclick="window.print()" class="btn btn-info">
+                <i class="fas fa-print"></i> Print Ticket
+            </button>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="mt-4 alert alert-info">
+            <h6><i class="fas fa-info-circle"></i> Important Information</h6>
+            <ul class="mb-0">
+                <li>Please arrive at the theater 30 minutes before the showtime</li>
+                <li>Carry a valid ID proof along with this booking confirmation</li>
+                <li>Seats are allocated on a first-come-first-served basis within the booked category</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    @@media print {
+        .btn, .alert-info {
+            display: none !important;
+        }
+        
+        .card {
+            border: 2px solid #000 !important;
+        }
+        
+        .alert-success {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724 !important;
+        }
+    }
+</style>

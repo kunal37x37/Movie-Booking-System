@@ -1,0 +1,72 @@
+@model MovieBookingSystem.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Title"
+                 onerror="this.src='/images/default-movie.jpg'">
+        </div>
+        <div class="col-md-8">
+            <h1>@Model.Title</h1>
+            <p class="lead">@Model.Description</p>
+            <div class="mb-3">
+                <p><strong><i class="fas fa-film"></i> Genre:</strong> @Model.Genre</p>
+                <p><strong><i class="fas fa-globe"></i> Language:</strong> @Model.Language</p>
+                <p><strong><i class="fas fa-clock"></i> Duration:</strong> @Model.Duration.ToString(@"hh\:mm") hours</p>
+                <p><strong><i class="fas fa-calendar"></i> Release Date:</strong> @Model.ReleaseDate.ToString("MMM dd, yyyy")</p>
+                <p><strong><i class="fas fa-tag"></i> Ticket Price:</strong> ₹@Model.TicketPrice.ToString("0")</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h3><i class="fas fa-clock"></i> Available Showtimes</h3>
+        @if (Model.Showtimes.Any())
+        {
+            <div class="row">
+                @foreach (var showtime in Model.Showtimes)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-theater-masks"></i> @showtime.Theater
+                                </h5>
+                                <p class="card-text">
+                                    <strong><i class="fas fa-calendar-alt"></i> Date & Time:</strong> 
+                                    @showtime.ShowDateTime.ToString("MMM dd, yyyy hh:mm tt")<br>
+                                    <strong><i class="fas fa-chair"></i> Available Seats:</strong> @showtime.AvailableSeats<br>
+                                    <strong><i class="fas fa-tag"></i> Price per Ticket:</strong> ₹@Model.TicketPrice.ToString("0")
+                                </p>
+                                @if (Context.Session.GetInt32("UserId") != null)
+                                {
+                                    <a href="@Url.Action("BookShowtime", "Booking", new { id = showtime.Id })" 
+                                       class="btn btn-success">
+                                        <i class="fas fa-ticket-alt"></i> Book Now
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Login", "Account")" class="btn btn-warning">
+                                        <i class="fas fa-sign-in-alt"></i> Login to Book
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <h5><i class="fas fa-info-circle"></i> No showtimes available</h5>
+                <p>There are no available showtimes for this movie at the moment. Please check back later.</p>
+            </div>
+        }
+    </div>
+</div>

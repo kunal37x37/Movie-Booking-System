@@ -1,0 +1,279 @@
+@model MovieBookingSystem.Models.Movie
+
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<div class="container">
+    <h2><i class="fas fa-plus-circle"></i> Add New Movie</h2>
+    
+    <!-- Success/Error Messages -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-film"></i> Movie Details</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddMovie" enctype="multipart/form-data" id="movieForm">
+                        @Html.AntiForgeryToken()
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="form-label">Movie Title *</label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter movie title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter movie description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Genre" class="form-label">Genre *</label>
+                                    <input asp-for="Genre" class="form-control" placeholder="e.g., Action, Drama, Comedy" />
+                                    <span asp-validation-for="Genre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Language" class="form-label">Language *</label>
+                                    <input asp-for="Language" class="form-control" placeholder="e.g., Hindi, English" />
+                                    <span asp-validation-for="Language" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Duration" class="form-label">Duration (HH:MM) *</label>
+                                    <input asp-for="Duration" type="time" class="form-control" step="1" />
+                                    <span asp-validation-for="Duration" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="TicketPrice" class="form-label">Ticket Price (₹) *</label>
+                                    <input asp-for="TicketPrice" class="form-control" type="number" step="10" min="0" placeholder="e.g., 250" />
+                                    <span asp-validation-for="TicketPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="ReleaseDate" class="form-label">Release Date *</label>
+                            <input asp-for="ReleaseDate" class="form-control" type="date" />
+                            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                        </div>
+                        
+                        <!-- IMAGE UPLOAD SECTION -->
+                        <div class="form-group mb-3">
+                            <label for="imageFile" class="form-label">Movie Poster Image *</label>
+                            <div class="input-group">
+                                <input type="file" name="imageFile" class="form-control" id="imageFile" accept="image/*" required />
+                                <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('imageFile').value=''">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle"></i> Supported formats: JPG, JPEG, PNG, GIF, BMP. Max size: 5MB
+                            </div>
+                            <span id="imageFileError" class="text-danger"></span>
+                            
+                            <!-- Image Preview -->
+                            <div id="imagePreview" class="mt-3 text-center" style="display: none;">
+                                <p class="text-muted mb-2">Image Preview:</p>
+                                <img id="previewImage" src="#" alt="Preview" 
+                                     style="max-width: 300px; max-height: 400px; border: 2px dashed #dee2e6; padding: 10px;" 
+                                     class="img-fluid rounded" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-plus"></i> Add Movie
+                            </button>
+                            <a href="@Url.Action("Movies")" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <!-- Image Guidelines Card -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle"></i> Image Guidelines</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success"></i> Use high-quality poster images</li>
+                        <li class="mb-2"><i class="fas fa-check text-success"></i> Recommended ratio: 2:3</li>
+                        <li class="mb-2"><i class="fas fa-check text-success"></i> Max file size: 5MB</li>
+                        <li class="mb-2"><i class="fas fa-check text-success"></i> Supported formats: JPG, PNG, GIF</li>
+                        <li class="mb-2"><i class="fas fa-check text-success"></i> Optimal size: 300x450 pixels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sample Preview Card -->
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-eye"></i> Sample Preview</h5>
+                </div>
+                <div class="card-body text-center">
+                    <img src="/images/default-movie.jpg" alt="Sample Movie Poster" 
+                         class="img-fluid rounded mb-3" 
+                         style="max-height: 250px; object-fit: cover;">
+                    <p class="text-muted small">
+                        Default image will be used if no image is uploaded
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        // Image preview functionality
+        document.getElementById('imageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+            const errorSpan = document.getElementById('imageFileError');
+            
+            // Reset previous error
+            errorSpan.textContent = '';
+            
+            if (file) {
+                // Validate file type
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp'];
+                if (!allowedTypes.includes(file.type)) {
+                    errorSpan.textContent = '❌ Please select a valid image file (JPG, JPEG, PNG, GIF, BMP).';
+                    e.target.value = '';
+                    preview.style.display = 'none';
+                    return;
+                }
+                
+                // Validate file size (5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    errorSpan.textContent = '❌ File size must be less than 5MB.';
+                    e.target.value = '';
+                    preview.style.display = 'none';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        // Form validation
+        document.getElementById('movieForm').addEventListener('submit', function(e) {
+            const imageFile = document.getElementById('imageFile').files[0];
+            const errorSpan = document.getElementById('imageFileError');
+            
+            if (!imageFile) {
+                e.preventDefault();
+                errorSpan.textContent = '❌ Please select a movie poster image.';
+                document.getElementById('imageFile').focus();
+                return false;
+            }
+            
+            // Additional validation
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp'];
+            if (!allowedTypes.includes(imageFile.type)) {
+                e.preventDefault();
+                errorSpan.textContent = '❌ Please select a valid image file (JPG, JPEG, PNG, GIF, BMP).';
+                return false;
+            }
+            
+            if (imageFile.size > 5 * 1024 * 1024) {
+                e.preventDefault();
+                errorSpan.textContent = '❌ File size must be less than 5MB.';
+                return false;
+            }
+            
+            return true;
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 5000);
+
+        // Set minimum date for release date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('ReleaseDate').min = today;
+        });
+    </script>
+
+    <style>
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+        
+        .card-header {
+            font-weight: 600;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        #imagePreview {
+            transition: all 0.3s ease;
+        }
+        
+        #previewImage {
+            transition: transform 0.3s ease;
+        }
+        
+        #previewImage:hover {
+            transform: scale(1.02);
+        }
+        
+        .input-group .btn {
+            border: 1px solid #ced4da;
+        }
+    </style>
+}

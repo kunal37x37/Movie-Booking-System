@@ -1,0 +1,118 @@
+@model MovieBookingSystem.Controllers.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container">
+    <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body text-center">
+                    <i class="fas fa-film fa-3x mb-3"></i>
+                    <h5 class="card-title">Total Movies</h5>
+                    <h2>@Model.TotalMovies</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-success">
+                <div class="card-body text-center">
+                    <i class="fas fa-ticket-alt fa-3x mb-3"></i>
+                    <h5 class="card-title">Total Bookings</h5>
+                    <h2>@Model.TotalBookings</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-warning">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-3x mb-3"></i>
+                    <h5 class="card-title">Total Users</h5>
+                    <h2>@Model.TotalUsers</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-info">
+                <div class="card-body text-center">
+                    <i class="fas fa-rupee-sign fa-3x mb-3"></i>
+                    <h5 class="card-title">Total Revenue</h5>
+                    <h2>₹@Model.TotalRevenue</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <h4><i class="fas fa-clock"></i> Recent Bookings</h4>
+            @if (Model.RecentBookings.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>User</th>
+                                <th>Movie</th>
+                                <th>Tickets</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model.RecentBookings)
+                            {
+                                <tr>
+                                    <td>@booking.BookingReference</td>
+                                    <td>@booking.User.Name</td>
+                                    <td>@booking.Showtime.Movie.Title</td>
+                                    <td>@booking.NumberOfTickets</td>
+                                    <td>₹@booking.TotalAmount</td>
+                                    <td>@booking.BookingDate.ToString("MMM dd, yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <a href="@Url.Action("AllBookings")" class="btn btn-primary">
+                    <i class="fas fa-list"></i> View All Bookings
+                </a>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> No recent bookings found.
+                </div>
+            }
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-bolt"></i> Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <a href="@Url.Action("AddMovie")" class="btn btn-success w-100 mb-2">
+                        <i class="fas fa-plus"></i> Add New Movie
+                    </a>
+                    <a href="@Url.Action("AddShowtime")" class="btn btn-info w-100 mb-2">
+                        <i class="fas fa-plus"></i> Add Showtime
+                    </a>
+                    <a href="@Url.Action("Movies")" class="btn btn-warning w-100 mb-2">
+                        <i class="fas fa-edit"></i> Manage Movies
+                    </a>
+                    <a href="@Url.Action("AllBookings")" class="btn btn-secondary w-100">
+                        <i class="fas fa-ticket-alt"></i> View All Bookings
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
