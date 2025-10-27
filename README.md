@@ -50,15 +50,15 @@
 |------------|----------------|
 | <img width="1205" height="848" alt="image" src="https://github.com/user-attachments/assets/59f28fae-ce75-4137-9a73-23eb2f071b80" /> | <img width="1072" height="764" alt="image" src="https://github.com/user-attachments/assets/75889393-a393-46a6-9510-eb43aa9e88a6" />|
 
- |  Manage Movies[Edit-update-active/inactive Movie] Page| Edit Movie page |
+|  Manage Movies[Edit-update-active/inactive Movie] Page| Edit Movie page |
 |------------|----------------|
 | <img width="1090" height="880" alt="image" src="https://github.com/user-attachments/assets/24d7e4ac-4d08-4e7f-ab6f-8c62f2966bf4" /> |<img width="1059" height="707" alt="image" src="https://github.com/user-attachments/assets/73e9c8ca-b1e3-4241-aa8c-a14b87ecd233" />|
 
-| Manage Showtimes[admin add/delete showtime] Page| | Add Showtime Page|
+| Manage Showtimes[admin add/delete showtime] Page| Add Showtime Page|
 |------------|----------------|
 |<img width="1084" height="629" alt="image" src="https://github.com/user-attachments/assets/963b6c3b-8fbb-4dd3-96c5-fab5d2e131e5" />|<img width="1052" height="572" alt="image"   src="https://github.com/user-attachments/assets/009461b6-9a2e-4984-a78a-dc17e2f95904" />|
 
- | Admin ShowBooking Page| | Admin Home Page|
+ | Admin ShowBooking Page | Admin Home Page|
  |------------|----------------|
 |<img width="1022" height="889" alt="image" src="https://github.com/user-attachments/assets/c8d8641c-860f-4624-936b-60a63c79d4a3" />|<img width="1117" height="761" alt="image" src="https://github.com/user-attachments/assets/0cf38e03-d8ef-42a8-8d6b-694a366792da" />|
 
