@@ -103,3 +103,11 @@ dotnet ef database update
 
 # Run the application
 dotnet run
+```
+
+#### Method 2: Manual Download
+```bash
+# Clone and run with Docker
+docker-compose up --build
+```
+
