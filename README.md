@@ -2,7 +2,7 @@ Movie Booking System - README
 ---------------------------------------------------------------------------------
 🎬 Project Overview
 A complete Movie Ticket Booking System built with ASP.NET Core MVC, Entity Framework Core, and SQLite. This system allows users to browse movies, book tickets, and manage bookings, while admins can manage movies, showtimes, and view reports.
-
+https://img.shields.io/badge/.NET-8.0-512BD4
 ---------------------------------------------------------------------------------
 📁 Project Structure
 
