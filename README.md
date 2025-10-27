@@ -111,3 +111,15 @@ dotnet run
 - Open in Visual Studio
 - Build and run
 
+### Default Accounts
+
+## Administrator Access
+```bash
+Email: rajhans@gmail.com
+Password: abc123
+```
+## User Accounts
+```bash
+Email: apple@gmail.com
+Password: abc123
+```
