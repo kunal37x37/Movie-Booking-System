@@ -213,5 +213,5 @@ https://localhost:7000
 #### Developer: Patel Kunal 
 #### Built with ❤️ using ASP.NET Core MVC
 #### Github:kunal37x37
-#### Project Link :
+#### Project Link : https://github.com/kunal37x37/Movie-Booking-System
 
