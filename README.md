@@ -145,5 +145,10 @@ dotnet run
 https://localhost:7000
 ```
 
+## 🔑 Default Accounts
+| Role | Email | Password |
+|--------|--------------|--------|
+| 👑 Admin | rajhans@gmail.com | abc123 |
+| 👤 User | apple@gmail.com | abc123 |
 
 
