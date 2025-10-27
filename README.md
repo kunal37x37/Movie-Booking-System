@@ -1,4 +1,3 @@
-<img width="1117" height="761" alt="image" src="https://github.com/user-attachments/assets/8a536e5d-7341-4efb-b0ba-e1dba878bf26" /><img width="1064" height="769" alt="image" src="https://github.com/user-attachments/assets/7d9ffe8d-4fc8-494b-8683-c69706225ce3" /># 🎬 Movie Booking System
 
 ![Movie Booking System Banner](assets/banner.png)
 
@@ -50,13 +49,11 @@
 
 |  Admin Dashboard Page| Add New Movie page |
 |------------|----------------|
-| <img width="1205" height="848" alt="image" src="https://github.com/user-attachments/assets/59f28fae-ce75-4137-9a73-23eb2f071b80" />
- | <img width="1072" height="764" alt="image" src="https://github.com/user-attachments/assets/75889393-a393-46a6-9510-eb43aa9e88a6" />|
+| <img width="1205" height="848" alt="image" src="https://github.com/user-attachments/assets/59f28fae-ce75-4137-9a73-23eb2f071b80" /> | <img width="1072" height="764" alt="image" src="https://github.com/user-attachments/assets/75889393-a393-46a6-9510-eb43aa9e88a6" />|
 
  |  Manage Movies[Edit-update-active/inactive Movie] Page| Edit Movie page |
 |------------|----------------|
-| <img width="1090" height="880" alt="image" src="https://github.com/user-attachments/assets/24d7e4ac-4d08-4e7f-ab6f-8c62f2966bf4" />
- |<img width="1059" height="707" alt="image" src="https://github.com/user-attachments/assets/73e9c8ca-b1e3-4241-aa8c-a14b87ecd233" />|
+| <img width="1090" height="880" alt="image" src="https://github.com/user-attachments/assets/24d7e4ac-4d08-4e7f-ab6f-8c62f2966bf4" /> |<img width="1059" height="707" alt="image" src="https://github.com/user-attachments/assets/73e9c8ca-b1e3-4241-aa8c-a14b87ecd233" />|
 
  | Manage Showtimes[admin add/delete showtime] Page| | Add Showtime Page|
  |------------|----------------|
