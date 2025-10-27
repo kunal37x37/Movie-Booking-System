@@ -115,8 +115,6 @@ To create a modern, feature-rich movie booking experience with easy deployment, 
 Users (1) ────▶ (Many) Bookings
 Movies (1) ────▶ (Many) Showtimes
 Showtimes (1) ────▶ (Many) Bookings
-
-
 ---
 
 ## 🛠 Installation & Setup
