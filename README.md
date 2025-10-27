@@ -17,7 +17,7 @@
 
 🎥 **Live Demo / Video Walkthrough**  
 
-"D:\movie booking system2.mp4"
+
 
 📸 **Screenshots**  
 | Home Page | Movie Details | Admin Dashboard |
