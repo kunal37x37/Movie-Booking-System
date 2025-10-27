@@ -140,6 +140,10 @@ dotnet ef database update
 # 4️⃣ Run the project
 dotnet run
 ```
+### **Open in browser:**
+```bash
+https://localhost:7000
+```
 
 
 
