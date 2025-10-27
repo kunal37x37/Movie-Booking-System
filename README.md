@@ -16,7 +16,6 @@
 ## 🌐 Demo
 
 🎥 **Live Demo / Video Walkthrough**  
-[▶ Watch on YouTube](https://youtu.be/demo)
 
 📸 **Screenshots**  
 | Home Page | Movie Details | Admin Dashboard |
