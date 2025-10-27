@@ -16,7 +16,7 @@
 ## 🌐 Demo
 
 🎥 **Live Demo / Video Walkthrough**  
-[![Movie Booking System Demo](https://img.shields.io/badge/🎬-Watch_Demo_Video-red?style=for-the-badge&logo=video)](https://github.com/kunal37x37/Movie-Booking-System/blob/main/movie088.mp4)
+[**Click here to watch the demo video**](https://github.com/kunal37x37/Movie-Booking-System/blob/main/movie088.mp4)
 
 
 📸 **Screenshots**  
