@@ -10,6 +10,7 @@
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-8.0-purple?style=for-the-badge&logo=.net)
 ![Entity Framework Core](https://img.shields.io/badge/Entity_Framework_Core-8.0-2C3E50?style=for-the-badge&logo=efcore&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 ## 🌐 Demo
