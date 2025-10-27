@@ -31,8 +31,13 @@
 |------------|----------------|
 |<img width="858" height="891" alt="image" src="https://github.com/user-attachments/assets/a44ea529-c83c-4658-a99c-b9c87d7ba547" />|<img width="1168" height="781" alt="image" src="https://github.com/user-attachments/assets/224ff223-7dce-47d6-882a-46c539d67aee" />|
 
+|Print Ticke image/E-Ticket | MyBooking page|
+|------------|----------------|
+|<img width="435" height="746" alt="image" src="https://github.com/user-attachments/assets/e2fad741-9554-4537-83a2-92aead94d7d0" />|<img width="1079" height="900" alt="image" src="https://github.com/user-attachments/assets/7daa8713-d159-463a-939a-c2039deb0fce" />|
 
-
+|Print Ticke image/E-Ticket | MyBooking page|
+|------------|----------------|
+|<img width="435" height="746" alt="image" src="https://github.com/user-attachments/assets/e2fad741-9554-4537-83a2-92aead94d7d0" />|<img width="1079" height="900" alt="image" src="https://github.com/user-attachments/assets/7daa8713-d159-463a-939a-c2039deb0fce" />|
 ---
 
 ## 🧠 Table of Contents
