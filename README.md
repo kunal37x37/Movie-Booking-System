@@ -29,8 +29,6 @@
 - [Default Accounts](#-default-accounts)
 - [Usage Guide](#-usage-guide)
 - [Image Upload Feature](#️-image-upload-feature)
-- [Troubleshooting](#-troubleshooting)
-- [UI/UX Features](#-uiux-features)
 - [Security Features](#-security-features)
 - [Future Enhancements](#-future-enhancements)
 - [Contributing](#-contributing)
