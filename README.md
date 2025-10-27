@@ -15,11 +15,7 @@
 
 ## 🌐 Demo
 
-🎥 **Live Demo / Video Walkthrough**  
-<video width="100%" controls>
-  <source src="https://raw.githubusercontent.com/kunal37x37/Movie-Booking-System/main/movie088.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
 
 📸 **Screenshots**  
 | Home Page | Movie Details | Admin Dashboard |
