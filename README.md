@@ -187,7 +187,7 @@ https://localhost:7000
 - 🚫 SQL Injection prevention
 - 🧾 Input validation on all forms
 
-  ##📈 Future Enhancements
+## 📈 Future Enhancements
 - 💳 Payment Gateway Integration
 - 📧 Email Notification System
 - 💺 Interactive Seat Selectio
@@ -195,19 +195,19 @@ https://localhost:7000
 - 🔍 Advanced Search & Filters
 - 📱 Android/iOS App version
 
-##🤝 Contributing
+## 🤝 Contributing
 - Fork this repository
 - Create a new branch (feature/YourFeature)
 - Commit your changes
 - Push to your branch
 - Create a Pull Request
 
-##📄 Licens
+## 📄 Licens
 - This project is for educational purposes only.
 
-##👨‍💻 Developer & Support
-Developer: Patel Kunal 
-Built with ❤️ using ASP.NET Core MVC
-Github:kunal37x37
-Project Link :
+## 👨‍💻 Developer & Support
+# Developer: Patel Kunal 
+# Built with ❤️ using ASP.NET Core MVC
+# Github:kunal37x37
+# Project Link :
 
