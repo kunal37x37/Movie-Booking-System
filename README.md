@@ -54,9 +54,9 @@
 |------------|----------------|
 | <img width="1090" height="880" alt="image" src="https://github.com/user-attachments/assets/24d7e4ac-4d08-4e7f-ab6f-8c62f2966bf4" /> |<img width="1059" height="707" alt="image" src="https://github.com/user-attachments/assets/73e9c8ca-b1e3-4241-aa8c-a14b87ecd233" />|
 
- | Manage Showtimes[admin add/delete showtime] Page| | Add Showtime Page|
- |------------|----------------|
- |<img width="1084" height="629" alt="image" src="https://github.com/user-attachments/assets/963b6c3b-8fbb-4dd3-96c5-fab5d2e131e5" />|<img width="1052" height="572" alt="image" src="https://github.com/user-attachments/assets/009461b6-9a2e-4984-a78a-dc17e2f95904" />|
+| Manage Showtimes[admin add/delete showtime] Page| | Add Showtime Page|
+|------------|----------------|
+|<img width="1084" height="629" alt="image" src="https://github.com/user-attachments/assets/963b6c3b-8fbb-4dd3-96c5-fab5d2e131e5" />|<img width="1052" height="572" alt="image"   src="https://github.com/user-attachments/assets/009461b6-9a2e-4984-a78a-dc17e2f95904" />|
 
  | Admin ShowBooking Page| | Admin Home Page|
  |------------|----------------|
