@@ -106,8 +106,8 @@ dotnet run
 ```
 
 #### Method 2: Manual Download
-```bash
-# Clone and run with Docker
-docker-compose up --build
-```
+-1.Download ZIP from Releases
+-2.Extract to desired location
+-3.Open in Visual Studio
+-4.Build and run
 
