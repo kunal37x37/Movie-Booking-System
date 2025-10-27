@@ -180,3 +180,34 @@ https://localhost:7000
   }
 }
 ```
+## 🔒 Security Features
+- 🔐 Session-based authentication
+- 👥 Role-based authorization (Admin/User)
+- 🛡 Anti-forgery token protection
+- 🚫 SQL Injection prevention
+- 🧾 Input validation on all forms
+
+  ##📈 Future Enhancements
+- 💳 Payment Gateway Integration
+- 📧 Email Notification System
+- 💺 Interactive Seat Selectio
+- ⭐ Movie Ratings & Reviews
+- 🔍 Advanced Search & Filters
+- 📱 Android/iOS App version
+
+##🤝 Contributing
+- Fork this repository
+- Create a new branch (feature/YourFeature)
+- Commit your changes
+- Push to your branch
+- Create a Pull Request
+
+##📄 Licens
+- This project is for educational purposes only.
+
+##👨‍💻 Developer & Support
+Developer: Patel Kunal 
+Built with ❤️ using ASP.NET Core MVC
+Github:kunal37x37
+Project Link :
+
