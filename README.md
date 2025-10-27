@@ -19,10 +19,9 @@
 [![Movie Booking System Demo](https://img.shields.io/badge/▶_CLICK_TO_PLAY_DEMO_VIDEO-FF0000?style=for-the-badge&logo=videoplayer&logoColor=white)](https://github.com/kunal37x37/Movie-Booking-System/blob/main/movie088.mp4)
 
 📸 **Screenshots**  
-| Home Page | Movie Details | Admin Dashboard |
+| Home Page | Register page | Login page |
 |------------|----------------|----------------|
-| <img width="1876" height="892" alt="image" src="https://github.com/user-attachments/assets/8c57599f-89e4-4872-84ea-077c901fff5e" />
-| ![Movie Details](assets/movie-details.png) | ![Admin Dashboard](assets/admin-dashboard.png) |
+| <img width="1876" height="892" alt="image" src="https://github.com/user-attachments/assets/8c57599f-89e4-4872-84ea-077c901fff5e" /> | <img width="1883" height="881" alt="image" src="https://github.com/user-attachments/assets/acbc609d-5134-4dcd-86d1-09279e6a1c74" />|<img width="1893" height="759" alt="image" src="https://github.com/user-attachments/assets/284624d1-77d5-4ceb-a163-cdaada1ee8c7" />|
 
 ---
 
